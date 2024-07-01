@@ -15,7 +15,7 @@ def parse_data(line) -> tuple[str, str, float]:
 conf = SparkConf().setMaster('local').setAppName('Get min temperatures')
 sc = SparkContext(conf=conf)
 
-data = sc.textFile('./data/1800.csv')
+data = sc.textFile('../../data/1800.csv')
 station_entry_temperature = data.map(parse_data)
 entries_with_min_temp = station_entry_temperature.filter(lambda x: x[1] == 'TMIN')
 station_temperature = entries_with_min_temp.map(lambda x: (x[0], x[2]))

@@ -12,7 +12,7 @@ def parse_line_into_age_and_num_friends(line) -> tuple[int, int]:
 spark_conf = SparkConf().setMaster('local').setAppName('FriendsByAge')
 sc = SparkContext(conf=spark_conf)
 
-data = sc.textFile('./data/fakefriends.csv')
+data = sc.textFile('../../data/fakefriends.csv')
 age_and_num_friends = data.map(parse_line_into_age_and_num_friends)
 total_by_age = age_and_num_friends.mapValues(lambda x: (x, 1)).reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1]))
 average_by_age = total_by_age.mapValues(lambda x: round(x[0] / x[1], 2))

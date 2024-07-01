@@ -10,7 +10,7 @@ def get_word_only_from_text(text: str) -> list[str]:
 conf = SparkConf().setMaster('local').setAppName('Count words')
 sc = SparkContext(conf=conf)
 
-data = sc.textFile('./data/Book')
+data = sc.textFile('../../data/Book')
 words = data.flatMap(get_word_only_from_text)
 
 # words_appearances = words.countByValue()
