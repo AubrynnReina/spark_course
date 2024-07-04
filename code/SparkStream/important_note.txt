@@ -1,0 +1,4 @@
+1. There's an error with this message "Exception in thread "main" java.lang.UnsatisfiedLinkError: org.apache.hadoop.io.nativeio.NativeIO$Windows.access0(Ljava/lang/String;I)Z"
+That can be fixed by following the SOF issue with the same message. But please, remember to set the environment path, not just the environment variable.
+
+2. With streaming, code should be written in .py files, rather than testing with .ipynb files due to interaction for the awaitTermination() method of the Spark stream.
